@@ -1,0 +1,25 @@
+import { Hex, parseEther } from "viem"
+import { getEthWalletClient, getPublicEthClient } from "../utils/ethClient"
+import { baseBridgeAbi } from "../data/abi/base-bridge"
+import { makeLogger } from "../utils/logger"
+import { sleep } from "../utils/common"
+
+export class BaseBridge {
+    privateKey: Hex
+    bridgeContractAddress:Hex = ''
+    logger: any
+    wallet: any
+
+    constructor(privateKey:Hex) {
+        this.privateKey = privateKey
+        this.logger = makeLogger("Base bridge")
+        this.wallet = getEthWalletClient
+    }
+        const estimatedFee = await tmpStarkProvider.estimateMessageFee({
+            from_address: this.bridgeContractAddress,
+            to_address: this.bridgeContractAddressL2,
+            entry_point_selector: "handle_deposit",
+            payload: [
+                this.toLowerCase(),
+                amount.toString(),
+                '0'
